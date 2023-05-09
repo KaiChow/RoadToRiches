@@ -1,0 +1,23 @@
+.DS_Store
+node_modules/
+miniprogram_npm/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+tests/**/coverage/
+public/json/*.json
+
+# Editor directories and files
+.idea 
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+/dist
+/test.js
+/dist-pre
+/public/json
+
