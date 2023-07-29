@@ -1,23 +1,6 @@
 <!--index.wxml-->
 <view class="container">
   <t-message id="t-message" />
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
   <t-tabs defaultValue="{{0}}" value="{{tabIndex}}" bind:change="onTabsChange" bind:click="onTabsClick">
     <t-tab-panel label="价格" value="{{0}}">
       <view class="edit-panel">
@@ -36,8 +19,7 @@
         <t-input label="现价" placeholder="0.00" value="{{startPrice}}" suffix="元" align="right" type="digit" bind:change="onStartPriceInput" />
         <t-input label="目标价" placeholder="0.00" value="{{endPrice}}" suffix="元" align="right" type="digit" bind:change="onEndPriceInput" />
         <t-input label="幅度" value="{{finalPercent}}" bind:change="onPercentInput" placeholder="0" suffix="%" align="right" type="digit" disabled="{{true}}" />
-        <t-input label="止盈价1" value="{{profitPrice1}}" disabled="{{true}}" type="digit" suffix="元" align="right" />
-        <t-input label="止盈价2" value="{{profitPrice2}}" disabled="{{true}}" type="digit" suffix="元" align="right" />
+        <t-input label="参考点" value="{{finalPoint}}"  placeholder="0" suffix="元" align="right" type="digit" disabled="{{true}}" />
         <view class="button-panel">
           <t-button theme="light" block size="large" bind:tap="handleReset">重置</t-button>
           <t-button theme="primary" block size="large" bind:tap="handlePercentCount" data-key="showTextAndTitle2">计算</t-button>
@@ -49,10 +31,9 @@
       <view class="edit-panel">
         <t-input label="当前价" placeholder="0.00" value="{{boCurentPrice}}" suffix="元" align="right" type="digit" bind:change="onBoPriceInput" />
         <t-input label="幅度5%" value="{{percent_5}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
+        <t-input label="幅度10%" value="{{percent_10}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
         <t-input label="幅度15%" value="{{percent_15}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
-        <t-input label="幅度25%" value="{{percent_25}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
-        <t-input label="幅度35%" value="{{percent_35}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
-        <t-input label="止损价" value="{{percent_38}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
+        <t-input label="幅度20%" value="{{percent_20}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
         <view class="button-panel1">
           <t-button theme="light" block size="large" bind:tap="handleBoReset">重置</t-button>
         </view>

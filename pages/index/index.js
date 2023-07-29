@@ -40,12 +40,12 @@ Page({
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
     boCurentPrice: '',
     percent_5: '',
+    percent_10: '',
     percent_15: '',
-    percent_25: '',
-    percent_35: '',
-    percent_38: '',
+    percent_20: '',
     profitPrice1: '',
     profitPrice2: '',
+    finalPoint:0
   },
   // 事件处理函数
   bindViewTap() {
@@ -197,9 +197,12 @@ Page({
       this.showDialog(e)
       return
     }
-    const temp = ((endPrice - startPrice) / startPrice) * 100
+    const temp = ((endPrice - startPrice) / startPrice)
     this.setData({
-      finalPercent: (temp).toFixed(2),
+      finalPercent: (temp*100).toFixed(2),
+    });
+    this.setData({
+      finalPoint: endPrice*(temp+1).toFixed(2),
     });
     // 下跌反弹 才有止盈
     if (parseInt(endPrice) < parseInt(startPrice)) {
@@ -207,6 +210,7 @@ Page({
       this.setData({
         profitPrice1: (endPrice * (1 - temp1)).toFixed(2),
         profitPrice2: startPrice,
+        finalPoint: endPrice*(1-temp1).toFixed(2),
       });
     }
   },
@@ -217,20 +221,18 @@ Page({
     this.setData({
       boCurentPrice: value,
       percent_5: (value * (1 - 0.05)).toFixed(2),
+      percent_10: (value * (1 - 0.1)).toFixed(2),
       percent_15: (value * (1 - 0.15)).toFixed(2),
-      percent_25: (value * (1 - 0.25)).toFixed(2),
-      percent_35: (value * (1 - 0.35)).toFixed(2),
-      percent_38: (value * (1 - 0.38)).toFixed(2),
+      percent_20: (value * (1 - 0.20)).toFixed(2),
     })
   },
   handleBoReset() {
     this.setData({
       boCurentPrice: '',
       percent_5: '',
+      percent_10: '',
       percent_15: '',
-      percent_25: '',
-      percent_35: '',
-      percent_38: '',
+      percent_20: '',
     })
   }
 })
