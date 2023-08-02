@@ -45,7 +45,10 @@ Page({
     percent_20: '',
     profitPrice1: '',
     profitPrice2: '',
-    finalPoint:0
+    finalPoint: 0,
+    lowPrice: 0,
+    heightPrice: 0,
+    buyPrice: 0,
   },
   // 事件处理函数
   bindViewTap() {
@@ -199,10 +202,10 @@ Page({
     }
     const temp = ((endPrice - startPrice) / startPrice)
     this.setData({
-      finalPercent: (temp*100).toFixed(2),
+      finalPercent: (temp * 100).toFixed(2),
     });
     this.setData({
-      finalPoint: endPrice*(temp+1).toFixed(2),
+      finalPoint: endPrice * (temp + 1).toFixed(2),
     });
     // 下跌反弹 才有止盈
     if (parseInt(endPrice) < parseInt(startPrice)) {
@@ -210,25 +213,68 @@ Page({
       this.setData({
         profitPrice1: (endPrice * (1 - temp1)).toFixed(2),
         profitPrice2: startPrice,
-        finalPoint: endPrice*(1-temp1).toFixed(2),
+        finalPoint: endPrice * (1 - temp1).toFixed(2),
       });
     }
   },
-  onBoPriceInput(event) {
+  onLowPrice(event) {
     const {
       value
     } = event.detail;
     this.setData({
-      boCurentPrice: value,
-      percent_5: (value * (1 - 0.05)).toFixed(2),
-      percent_10: (value * (1 - 0.1)).toFixed(2),
-      percent_15: (value * (1 - 0.15)).toFixed(2),
-      percent_20: (value * (1 - 0.20)).toFixed(2),
-    })
+      lowPrice: value,
+    });
+  },
+  onHeightPrice(event) {
+    const {
+      value
+    } = event.detail;
+    this.setData({
+      heightPrice: value,
+    });
+  },
+  onBuyPrice(event) {
+    const {
+      value
+    } = event.detail;
+    this.setData({
+      buyPrice: value,
+    });
+  },
+  handleBoCount() {
+    const {
+      lowPrice,
+      heightPrice,
+      buyPrice,
+    } = this.data;
+    if (lowPrice && heightPrice) {
+      let _lowPrice = parseInt(lowPrice)
+      let _heightPrice = parseInt(heightPrice)
+      // 计算
+      let _buyPrice = (_lowPrice + _heightPrice) / 2
+      this.setData({
+        buyPrice: _buyPrice,
+        percent_5: (_buyPrice * (1 - 0.05)).toFixed(2),
+        percent_10: (_buyPrice * (1 - 0.1)).toFixed(2),
+        percent_15: (_buyPrice * (1 - 0.15)).toFixed(2),
+        percent_20: (_buyPrice * (1 - 0.20)).toFixed(2),
+      })
+    }
+    if (!lowPrice && !heightPrice && buyPrice) {
+      let _buyPrice = parseInt(buyPrice)
+      this.setData({
+        percent_5: (_buyPrice * (1 - 0.05)).toFixed(2),
+        percent_10: (_buyPrice * (1 - 0.1)).toFixed(2),
+        percent_15: (_buyPrice * (1 - 0.15)).toFixed(2),
+        percent_20: (_buyPrice * (1 - 0.20)).toFixed(2),
+      })
+    }
   },
   handleBoReset() {
     this.setData({
-      boCurentPrice: '',
+      lowPrice: '',
+      heightPrice: '',
+      buyPrice: '',
       percent_5: '',
       percent_10: '',
       percent_15: '',
