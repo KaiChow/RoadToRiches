@@ -46,9 +46,16 @@ Page({
     profitPrice1: '',
     profitPrice2: '',
     finalPoint: 0,
-    lowPrice: 0,
-    heightPrice: 0,
-    buyPrice: 0,
+    lowPrice: "",
+    heightPrice: "",
+    buyPrice: "",
+    heightBoPrice: "",
+    lowBoPrice: "",
+    outPrice: "",
+    price1: "",
+    price2: "",
+    price3: "",
+    price4: "",
   },
   // 事件处理函数
   bindViewTap() {
@@ -233,6 +240,22 @@ Page({
       heightPrice: value,
     });
   },
+  onLowBoPrice(event) {
+    const {
+      value
+    } = event.detail;
+    this.setData({
+      lowBoPrice: value,
+    });
+  },
+  onHeightBoPrice(event) {
+    const {
+      value
+    } = event.detail;
+    this.setData({
+      heightBoPrice: value,
+    });
+  },
   onBuyPrice(event) {
     const {
       value
@@ -241,44 +264,65 @@ Page({
       buyPrice: value,
     });
   },
+
   handleBoCount() {
     const {
       lowPrice,
       heightPrice,
-      buyPrice,
+      lowBoPrice,
+      heightBoPrice,
     } = this.data;
+    //四舍五入保留2位小数（不够位数，则用0替补）
+    function keepTwoDecimalFull(num) {
+      var result = parseFloat(num);
+      if (isNaN(result)) {
+        alert('传递参数错误，请检查！');
+        return false;
+      }
+      result = Math.round(num * 100) / 100;
+      var s_x = result.toString();
+      var pos_decimal = s_x.indexOf('.');
+      if (pos_decimal < 0) {
+        pos_decimal = s_x.length;
+        s_x += '.';
+      }
+      while (s_x.length <= pos_decimal + 2) {
+        s_x += '0';
+      }
+      return s_x;
+    }
     if (lowPrice && heightPrice) {
-      let _lowPrice = parseInt(lowPrice)
-      let _heightPrice = parseInt(heightPrice)
+      let _lowPrice = Number(lowPrice)
+      let _heightPrice = Number(heightPrice)
+      let _percent = ((_heightPrice - _lowPrice) / _heightPrice)
       // 计算
-      let _buyPrice = (_lowPrice + _heightPrice) / 2
+      let _argv = (_percent + 0.03) / 3
       this.setData({
-        buyPrice: _buyPrice,
-        percent_5: (_buyPrice * (1 - 0.05)).toFixed(2),
-        percent_10: (_buyPrice * (1 - 0.1)).toFixed(2),
-        percent_15: (_buyPrice * (1 - 0.15)).toFixed(2),
-        percent_20: (_buyPrice * (1 - 0.20)).toFixed(2),
+        price1: _heightPrice,
+        price2: keepTwoDecimalFull(_heightPrice * (1 - _argv)),
+        price3: keepTwoDecimalFull(_heightPrice * (1 - _argv * 2)),
+        price4: keepTwoDecimalFull(_heightPrice * (1 - _argv * 3)),
       })
     }
-    if (!lowPrice && !heightPrice && buyPrice) {
-      let _buyPrice = parseInt(buyPrice)
-      this.setData({
-        percent_5: (_buyPrice * (1 - 0.05)).toFixed(2),
-        percent_10: (_buyPrice * (1 - 0.1)).toFixed(2),
-        percent_15: (_buyPrice * (1 - 0.15)).toFixed(2),
-        percent_20: (_buyPrice * (1 - 0.20)).toFixed(2),
-      })
+    if (lowBoPrice && heightBoPrice){
+      let _lowPrice = Number(lowBoPrice)
+      let _heightPrice = Number(heightBoPrice)
+      let _percent = ((_heightPrice - _lowPrice) / _heightPrice)
+      let price = _lowPrice*(1+_percent)
+      this.setData({outPrice:price})
     }
   },
   handleBoReset() {
     this.setData({
       lowPrice: '',
       heightPrice: '',
-      buyPrice: '',
-      percent_5: '',
-      percent_10: '',
-      percent_15: '',
-      percent_20: '',
+      lowBoPrice: '',
+      heightBoPrice: '',
+      outPrice: "",
+      price1: '',
+      price2: '',
+      price3: '',
+      price4: '',
     })
   }
 })
