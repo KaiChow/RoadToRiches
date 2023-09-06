@@ -56,6 +56,7 @@ Page({
     price2: "",
     price3: "",
     price4: "",
+    price5:'',
   },
   // 事件处理函数
   bindViewTap() {
@@ -291,17 +292,14 @@ Page({
       }
       return s_x;
     }
-    if (lowPrice && heightPrice) {
+    if (lowPrice) {
       let _lowPrice = Number(lowPrice)
-      let _heightPrice = Number(heightPrice)
-      let _percent = ((_heightPrice - _lowPrice) / _heightPrice)
-      // 计算
-      let _argv = (_percent + 0.03) / 3
       this.setData({
-        price1: _heightPrice,
-        price2: keepTwoDecimalFull(_heightPrice * (1 - _argv)),
-        price3: keepTwoDecimalFull(_heightPrice * (1 - _argv * 2)),
-        price4: keepTwoDecimalFull(_heightPrice * (1 - _argv * 3)),
+        price1: _lowPrice*(1+0.01),
+        price2: keepTwoDecimalFull(_lowPrice * (1 - 0.06)),
+        price3: keepTwoDecimalFull(_lowPrice * (1 - 0.13)),
+        price4: keepTwoDecimalFull(_lowPrice * (1 - 0.20)),
+        price5: keepTwoDecimalFull(_lowPrice * (1 - 0.21)),
       })
     }
     if (lowBoPrice && heightBoPrice){
@@ -323,6 +321,7 @@ Page({
       price2: '',
       price3: '',
       price4: '',
+      price5:'',
     })
   }
 })

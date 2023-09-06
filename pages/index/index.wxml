@@ -5,15 +5,16 @@
   <t-tabs defaultValue="{{0}}" value="{{tabIndex}}" bind:change="onTabsChange" bind:click="onTabsClick">
     <t-tab-panel label="波段" value="{{0}}">
       <view class="edit-panel">
-        <t-input label="波段高点" placeholder="0.00" value="{{heightBoPrice}}" suffix="元" align="right" type="digit" bind:change="onHeightBoPrice" />
-        <t-input label="波段低点" placeholder="0.00" value="{{lowBoPrice}}" suffix="元" align="right" type="digit" bind:change="onLowBoPrice" />
-        <t-input label="参考高点" placeholder="0.00" value="{{heightPrice}}" suffix="元" align="right" type="digit" bind:change="onHeightPrice" />
-        <t-input label="参考低点" placeholder="0.00" value="{{lowPrice}}" suffix="元" align="right" type="digit" bind:change="onLowPrice" />
-        <t-input label="止盈参考点" value="{{outPrice}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
-        <t-input label="参考点1" value="{{heightPrice}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
-        <t-input label="参考点2" value="{{price2}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
-        <t-input label="参考点3" value="{{price3}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
-        <t-input label="参考点4" value="{{price4}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
+        <!-- <t-input label="波段高点" placeholder="0.00" value="{{heightBoPrice}}" suffix="元" align="right" type="digit" bind:change="onHeightBoPrice" />
+        <t-input label="波段低点" placeholder="0.00" value="{{lowBoPrice}}" suffix="元" align="right" type="digit" bind:change="onLowBoPrice" /> -->
+        <!-- <t-input label="参考高点" placeholder="0.00" value="{{heightPrice}}" suffix="元" align="right" type="digit" bind:change="onHeightPrice" /> -->
+        <t-input label="参考点" placeholder="0.00" value="{{lowPrice}}" suffix="元" align="right" type="digit" bind:change="onLowPrice" />
+        <!-- <t-input label="止盈参考点" value="{{outPrice}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" /> -->
+        <t-input label="开仓" value="{{price1}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
+        <t-input label="参考点1" value="{{price2}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
+        <t-input label="参考点2" value="{{price3}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
+        <t-input label="参考点3" value="{{price4}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
+        <t-input label="止损" value="{{price5}}" placeholder="0.00" suffix="元" align="right" type="digit" disabled="{{true}}" />
         <view class="button-panel">
           <t-button theme="light"  block size="large" bind:tap="handleBoCount">计算</t-button>
           <t-button  block size="large" bind:tap="handleBoReset">重置</t-button>

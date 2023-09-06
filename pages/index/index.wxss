@@ -6,3 +6,6 @@
 .button-panel button{
   margin: 20rpx;
 }
+.bg{
+  height: 389rpx;
+}
