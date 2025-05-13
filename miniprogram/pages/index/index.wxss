@@ -1,0 +1,177 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+  width: 80%;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.avatar-wrapper {
+  padding: 0;
+  width: 56px !important;
+  border-radius: 8px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.avatar {
+  display: block;
+  width: 56px;
+  height: 56px;
+}
+
+.nickname-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  border-top: .5px solid rgba(0, 0, 0, 0.1);
+  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+.nickname-label {
+  width: 105px;
+}
+
+.nickname-input {
+  flex: 1;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32rpx;
+  padding: 16rpx 0;
+}
+
+.title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.subtitle {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.calculator-container {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.display {
+  margin-bottom: 24rpx;
+}
+
+.display-input {
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 44rpx;
+  text-align: right;
+  font-weight: 500;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.keypad {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.keypad-row {
+  display: flex;
+  gap: 12rpx;
+}
+
+.key-btn {
+  flex: 1;
+  height: 96rpx;
+  font-size: 36rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.key-btn:active {
+  transform: scale(0.95);
+}
+
+.key-btn.function {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.key-btn.number {
+  background: #fff;
+  color: #333;
+  border: 2rpx solid #e8e8e8;
+}
+
+.key-btn.operator {
+  background: linear-gradient(135deg, #0052d9, #1890ff);
+  color: #fff;
+  border: none;
+}
+
+.key-btn.equal {
+  background: linear-gradient(135deg, #00b578, #00a870);
+  color: #fff;
+  border: none;
+}
+
+.key-btn.zero {
+  flex: 2;
+}
+
+/* 覆盖 TDesign 默认样式 */
+.t-input {
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.t-button {
+  margin: 0;
+  padding: 0;
+}

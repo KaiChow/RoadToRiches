@@ -1,0 +1,53 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="title">计算器</view>
+    <view class="subtitle">简单实用的计算工具</view>
+  </view>
+
+  <view class="calculator-container">
+    <view class="display">
+      <t-input
+        value="{{displayValue}}"
+        readonly
+        class="display-input"
+      />
+    </view>
+    
+    <view class="keypad">
+      <view class="keypad-row">
+        <t-button theme="default" size="large" block bind:tap="clear" class="key-btn function">C</t-button>
+        <t-button theme="default" size="large" block bind:tap="toggleSign" class="key-btn function">+/-</t-button>
+        <t-button theme="default" size="large" block bind:tap="percentage" class="key-btn function">%</t-button>
+        <t-button theme="primary" size="large" block bind:tap="operator" data-op="÷" class="key-btn operator">÷</t-button>
+      </view>
+      
+      <view class="keypad-row">
+        <t-button theme="default" size="large" block bind:tap="appendNumber" data-number="7" class="key-btn number">7</t-button>
+        <t-button theme="default" size="large" block bind:tap="appendNumber" data-number="8" class="key-btn number">8</t-button>
+        <t-button theme="default" size="large" block bind:tap="appendNumber" data-number="9" class="key-btn number">9</t-button>
+        <t-button theme="primary" size="large" block bind:tap="operator" data-op="×" class="key-btn operator">×</t-button>
+      </view>
+      
+      <view class="keypad-row">
+        <t-button theme="default" size="large" block bind:tap="appendNumber" data-number="4" class="key-btn number">4</t-button>
+        <t-button theme="default" size="large" block bind:tap="appendNumber" data-number="5" class="key-btn number">5</t-button>
+        <t-button theme="default" size="large" block bind:tap="appendNumber" data-number="6" class="key-btn number">6</t-button>
+        <t-button theme="primary" size="large" block bind:tap="operator" data-op="-" class="key-btn operator">-</t-button>
+      </view>
+      
+      <view class="keypad-row">
+        <t-button theme="default" size="large" block bind:tap="appendNumber" data-number="1" class="key-btn number">1</t-button>
+        <t-button theme="default" size="large" block bind:tap="appendNumber" data-number="2" class="key-btn number">2</t-button>
+        <t-button theme="default" size="large" block bind:tap="appendNumber" data-number="3" class="key-btn number">3</t-button>
+        <t-button theme="primary" size="large" block bind:tap="operator" data-op="+" class="key-btn operator">+</t-button>
+      </view>
+      
+      <view class="keypad-row">
+        <t-button theme="default" size="large" block bind:tap="appendNumber" data-number="0" class="key-btn number zero">0</t-button>
+        <t-button theme="default" size="large" block bind:tap="appendDecimal" class="key-btn number">.</t-button>
+        <t-button theme="primary" size="large" block bind:tap="calculate" class="key-btn equal">=</t-button>
+      </view>
+    </view>
+  </view>
+</view>

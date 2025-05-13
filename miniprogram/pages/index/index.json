@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-cell": "../../miniprogram_npm/tdesign-miniprogram/cell/cell",
+    "t-cell-group": "../../miniprogram_npm/tdesign-miniprogram/cell-group/cell-group",
+    "t-input": "../../miniprogram_npm/tdesign-miniprogram/input/input",
+    "t-button": "../../miniprogram_npm/tdesign-miniprogram/button/button"
+  }
+}

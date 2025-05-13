@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="header">
+    <view class="title">涨跌计算器</view>
+    <view class="subtitle">快速计算价格变动</view>
+  </view>
+
+  <view class="form-container">
+    <view class="input-group">
+      <view class="input-label">初始价格</view>
+      <t-input
+        type="digit"
+        value="{{initialPrice}}"
+        placeholder="请输入初始价格"
+        bind:change="onInitialPriceInput"
+        class="custom-input"
+      />
+    </view>
+
+    <view class="input-group">
+      <view class="input-label">涨跌百分比</view>
+      <t-input
+        type="digit"
+        value="{{percentage}}"
+        placeholder="请输入涨跌百分比"
+        bind:change="onPercentageInput"
+        class="custom-input"
+      />
+    </view>
+    
+    <view class="button-group">
+      <t-button theme="primary" size="large" block bind:tap="calculate" class="calculate-btn">计算结果</t-button>
+    </view>
+
+    <view class="result-container" wx:if="{{result !== null}}">
+      <view class="result-title {{percentage > 0 ? 'profit' : 'loss'}}">
+        {{percentage > 0 ? '上涨后价格' : '下跌后价格'}}
+      </view>
+      <view class="result-value {{percentage > 0 ? 'profit' : 'loss'}}">
+        {{result}}
+      </view>
+    </view>
+  </view>
+</view> 

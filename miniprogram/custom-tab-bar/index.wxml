@@ -1,0 +1,5 @@
+<t-tab-bar value="{{selected}}" bindchange="onTabChange" fixed>
+  <t-tab-bar-item icon="chart-bar" value="0" label="股票盈亏"></t-tab-bar-item>
+  <t-tab-bar-item icon="trending-up" value="1" label="涨跌计算"></t-tab-bar-item>
+  <t-tab-bar-item icon="calculator" value="2" label="计算器"></t-tab-bar-item>
+</t-tab-bar> 

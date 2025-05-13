@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="header">
+    <view class="title">股票盈亏计算器</view>
+    <view class="subtitle">快速计算您的投资收益</view>
+  </view>
+
+  <view class="form-container">
+    <view class="input-group">
+      <view class="input-label">买入价格</view>
+      <t-input
+        type="digit"
+        value="{{buyPrice}}"
+        placeholder="请输入买入价格"
+        bind:change="onBuyPriceInput"
+        class="custom-input"
+      />
+    </view>
+
+    <view class="input-group">
+      <view class="input-label">卖出价格</view>
+      <t-input
+        type="digit"
+        value="{{sellPrice}}"
+        placeholder="请输入卖出价格"
+        bind:change="onSellPriceInput"
+        class="custom-input"
+      />
+    </view>
+    
+    <view class="button-group">
+      <t-button theme="primary" size="large" block bind:tap="calculate" class="calculate-btn">计算盈亏</t-button>
+    </view>
+
+    <view class="result-container" wx:if="{{result !== null}}">
+      <view class="result-title {{result > 0 ? 'profit' : 'loss'}}">
+        {{result > 0 ? '盈利' : '亏损'}}
+      </view>
+      <view class="result-value {{result > 0 ? 'profit' : 'loss'}}">
+        {{result}}%
+      </view>
+    </view>
+  </view>
+</view> 
